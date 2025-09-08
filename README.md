@@ -5,8 +5,9 @@ A modern, responsive landing page for Magdalena Mikurda's professional manicure 
 ## Features
 
 - Responsive design that works on all devices
-- Modern and clean UI with attractive animations
-- Interactive elements including counters and smooth scrolling
+- Modern and clean UI with sophisticated GSAP animations
+- Scroll-triggered animations that enhance user experience
+- Interactive elements including animated counters and smooth scrolling
 - Optimized for performance and SEO
 - Ready for GitHub Pages deployment
 
@@ -61,6 +62,21 @@ The landing page currently uses placeholder elements that need to be replaced wi
 - Adjust the counter values in the Experience section to match actual statistics
 - Update the link in the Courses section to point to the actual online training platform
 
+### Customizing Animations
+
+The website uses GSAP (GreenSock Animation Platform) for all animations:
+
+- **Scroll-Triggered Animations**: Most animations are triggered when elements come into view using GSAP's ScrollTrigger plugin. These can be customized in the `main.js` file.
+- **Hero Section**: The hero section uses a timeline-based animation sequence that can be adjusted for timing and effects.
+- **Counter Animations**: The counter elements in the Experience section use GSAP to animate counting up to their target values.
+- **Section Headers**: All section headers have special animations for both the text and underline elements.
+- **Pulse Effect**: The "Explore Online Trainings" button uses a GSAP animation for its pulsing effect.
+
+To modify animations:
+1. Find the relevant animation in `js/main.js`
+2. Adjust parameters like `duration`, `ease`, `delay`, or animation properties
+3. For ScrollTrigger animations, you can modify when they trigger by changing the `start` and `toggleActions` parameters
+
 ## Browser Compatibility
 
 - Chrome (latest)
@@ -73,8 +89,10 @@ The landing page currently uses placeholder elements that need to be replaced wi
 ## Technologies Used
 
 - HTML5
-- CSS3 (Flexbox, Grid, Animations)
+- CSS3 (Flexbox, Grid)
 - JavaScript (ES6+)
+- GSAP (GreenSock Animation Platform) for advanced animations
+- GSAP ScrollTrigger for scroll-based animations
 - Font Awesome for icons
 - Google Fonts for typography
 
