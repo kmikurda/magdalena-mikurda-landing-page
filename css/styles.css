@@ -6,8 +6,8 @@
 /* ===== VARIABLES ===== */
 :root {
     /* Colors */
-    --primary-color: #ff6b6b;
-    --secondary-color: #f06292;
+    --primary-color: #e13d3d;
+    --secondary-color: #272727;
     --accent-color: #bb86fc;
     --dark-color: #2c2c2c;
     --light-color: #f8f9fa;
@@ -220,6 +220,23 @@ section {
     width: 100%;
 }
 
+.nav-link-courses {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+}
+
+.nav-link-courses:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+    color: white;
+}
+
 .hamburger {
     display: none;
     cursor: pointer;
@@ -428,6 +445,17 @@ section {
     z-index: 1;
 }
 
+.image {
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+}
+
 .placeholder-1 { background: linear-gradient(135deg, #ff6b6b, #ff8e8e); }
 .placeholder-2 { background: linear-gradient(135deg, #f06292, #f48fb1); }
 .placeholder-3 { background: linear-gradient(135deg, #ba68c8, #ce93d8); }
@@ -448,6 +476,8 @@ section {
     background-attachment: fixed;
     color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .courses .section-header h2 {
@@ -462,6 +492,15 @@ section {
 .courses-content p {
     margin-bottom: 2rem;
     font-size: 1.1rem;
+}
+
+.background-image {
+    position: absolute;
+    right: 20%;
+    top: -20%;
+    /* transform: translateY(-25%); */
+    max-height: 139%;
+    z-index: 1;
 }
 
 /* ===== FOOTER ===== */
@@ -618,5 +657,11 @@ section {
     
     .gallery-container {
         grid-template-columns: 1fr;
+    }
+    
+    .background-image {
+        top: -16%;
+        right: -35%;
+        opacity: 16%;
     }
 }
