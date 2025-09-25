@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Biznes Nail Artist - praktyczny poradnik jak założyć i prowadzić dochodowy salon manicure od Magdaleny Mikurdy. Od marketingu po zarządzanie klientami.">
+    <title>Biznes Nail Artist | Magdalena Mikurda</title>
+    <link rel="icon" href="assets/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <style>
+        /* Additional styles for ebook detail page */
+        .ebook-detail-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        linear-gradient(135deg, #ff6b6b, #6b66ff);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .ebook-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .ebook-cover {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            height: 500px;
+        }
+
+        .ebook-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ebook-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .ebook-price-detail {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .ebook-description-detail {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .buy-section {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .features-list {
+            margin: 2rem 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .feature-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text p {
+            color: var(--gray-color);
+            margin-bottom: 0;
+        }
+
+        .testimonials {
+            margin-top: 4rem;
+        }
+
+        .testimonial-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding: 0 1.5rem;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            left: 0;
+            top: -10px;
+        }
+
+        .testimonial-text::after {
+            right: 0;
+            bottom: -10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--gray-color);
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        linear-gradient(135deg, #6b66ff, #bb86fc);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-large {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+        }
+
+        .table-of-contents {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+
+        .table-of-contents h3 {
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .toc-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .toc-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.5rem;
+        }
+
+        .business-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .business-benefit {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .business-benefit:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .benefit-description {
+            color: var(--gray-color);
+            margin-bottom: 0;
+        }
+
+        .roi-section {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .roi-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .roi-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .roi-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .ebook-detail-container {
+                grid-template-columns: 1fr;
+            }
+
+            .ebook-cover {
+                height: 400px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .business-benefits {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .business-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="assets/images/logo red.png" alt="Magdalena Mikurda Logo" class="logo-image">
+                    <h1>Magdalena Mikurda</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="http://kursy.magdalenamikurda.pl/" class="nav-link-courses">Kursy</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Start</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">O mnie</a></li>
+                    <li class="nav-item"><a href="index.html#experience" class="nav-link">Doświadczenie</a></li>
+                    <li class="nav-item"><a href="index.html#gallery" class="nav-link">Galeria</a></li>
+                    <li class="nav-item"><a href="ebooks.html" class="nav-link">Ebooki</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Kontakt</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="ebook-detail-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Biznes Nail Artist</h1>
+                <h2 class="fade-in">Jak założyć i prowadzić dochodowy salon manicure</h2>
+                <p class="fade-in">Praktyczny poradnik od marketingu po zarządzanie klientami</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ebook-detail">
+        <div class="container">
+            <div class="ebook-detail-container">
+                <div class="ebook-cover fade-in">
+                    <img src="assets/images/art3.jpg" alt="Biznes Nail Artist">
+                </div>
+                <div class="ebook-info fade-in">
+                    <h1>Biznes Nail Artist</h1>
+                    <p class="ebook-description-detail">
+                        Ten praktyczny poradnik to kompletny przewodnik po biznesowej stronie prowadzenia salonu manicure. Niezależnie od tego, czy dopiero planujesz otworzyć własny salon, czy chcesz rozwinąć istniejący biznes, ten ebook dostarczy Ci wszystkich niezbędnych informacji, aby odnieść sukces w branży beauty.
+                    </p>
+                    <p class="ebook-description-detail">
+                        Dzielę się w nim moim wieloletnim doświadczeniem w prowadzeniu dochodowego biznesu w branży nail art. Dowiesz się, jak skutecznie pozyskiwać i utrzymywać klientów, jak ustalać ceny, które zapewnią Ci godziwy zarobek, jak zarządzać finansami salonu oraz jak budować silną markę osobistą.
+                    </p>
+                    <p class="ebook-price-detail">79,99 zł</p>
+                    <a href="https://example.com/payment/ebook3" class="btn btn-primary btn-large">Kup teraz</a>
+                </div>
+            </div>
+
+            <div class="business-benefits fade-in">
+                <div class="business-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Zwiększ swoje przychody</h3>
+                    <p class="benefit-description">Poznaj sprawdzone strategie cenowe i techniki sprzedaży, które pozwolą Ci zwiększyć przychody bez utraty klientów.</p>
+                </div>
+                <div class="business-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Zbuduj lojalną bazę klientów</h3>
+                    <p class="benefit-description">Dowiedz się, jak przyciągać idealnych klientów i budować z nimi długotrwałe relacje, które przełożą się na regularne przychody.</p>
+                </div>
+                <div class="business-benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="benefit-title">Skuteczny marketing</h3>
+                    <p class="benefit-description">Poznaj niskobudżetowe strategie marketingowe, które sprawdzają się w branży beauty i pozwalają wyróżnić się na tle konkurencji.</p>
+                </div>
+            </div>
+
+            <div class="table-of-contents fade-in">
+                <h3>Spis treści:</h3>
+                <ul class="toc-list">
+                    <li>Planowanie biznesu - od pomysłu do realizacji</li>
+                    <li>Analiza rynku i konkurencji</li>
+                    <li>Wybór lokalizacji i aranżacja salonu</li>
+                    <li>Formalności prawne i podatkowe</li>
+                    <li>Budżetowanie i zarządzanie finansami</li>
+                    <li>Ustalanie cen usług</li>
+                    <li>Budowanie marki osobistej</li>
+                    <li>Marketing w mediach społecznościowych</li>
+                    <li>Pozyskiwanie i utrzymywanie klientów</li>
+                    <li>Zarządzanie czasem i rezerwacjami</li>
+                    <li>Rozwiązywanie trudnych sytuacji z klientami</li>
+                    <li>Rozwój biznesu - kursy, produkty, szkolenia</li>
+                </ul>
+            </div>
+
+            <div class="roi-section fade-in">
+                <h2 class="roi-title">Zwrot z inwestycji</h2>
+                <p class="roi-description">Ten ebook to inwestycja, która zwróci się wielokrotnie. Jedna dodatkowa stała klientka lub skuteczna strategia cenowa może przynieść Ci dodatkowe przychody znacznie przewyższające koszt tego poradnika.</p>
+                <div class="roi-value">10x ROI</div>
+                <p>Szacowany zwrot z inwestycji przy wdrożeniu strategii z ebooka</p>
+            </div>
+
+            <div class="features-list fade-in">
+                <h2>Co zyskasz dzięki temu ebookowi?</h2>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Praktyczna wiedza biznesowa</h3>
+                        <p>Konkretne strategie i narzędzia, które możesz od razu wdrożyć w swoim biznesie, bez zbędnej teorii.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Gotowe szablony i formularze</h3>
+                        <p>Otrzymasz dostęp do szablonów biznesowych, formularzy dla klientów i kalkulatorów finansowych, które ułatwią Ci prowadzenie biznesu.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Strategie marketingowe</h3>
+                        <p>Poznasz skuteczne metody promocji salonu w mediach społecznościowych i budowania rozpoznawalnej marki.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Oszczędność czasu i pieniędzy</h3>
+                        <p>Unikniesz kosztownych błędów i skrócisz drogę do sukcesu, korzystając z mojego wieloletniego doświadczenia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buy-section fade-in">
+                <h2>Gotowa rozwinąć swój biznes?</h2>
+                <p>Ebook dostępny jest w formacie PDF, który możesz czytać na dowolnym urządzeniu - komputerze, tablecie czy smartfonie.</p>
+                <p>Po zakupie otrzymasz natychmiastowy dostęp do ebooka oraz wszystkich dodatkowych materiałów.</p>
+                <p class="ebook-price-detail">79,99 zł</p>
+                <a href="https://example.com/payment/ebook3" class="btn btn-primary">Kup teraz</a>
+            </div>
+
+            <div class="testimonials fade-in">
+                <h2>Co mówią czytelniczki:</h2>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Dzięki temu ebookowi w ciągu 3 miesięcy podwoiłam liczbę stałych klientek. Strategie marketingowe, które opisuje Magdalena, są proste do wdrożenia i naprawdę działają. Najlepsza inwestycja w mój biznes!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EK</div>
+                        <div class="author-info">
+                            <h4>Ewa K.</h4>
+                            <p>Właścicielka salonu paznokci</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <p class="testimonial-text">Otworzyłam salon 6 miesięcy temu i od początku korzystałam z porad zawartych w tym ebooku. Dzięki temu uniknęłam wielu błędów i szybko zbudowałam stabilną bazę klientek. Szczególnie przydatne były wskazówki dotyczące ustalania cen i zarządzania czasem.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MN</div>
+                        <div class="author-info">
+                            <h4>Marta N.</h4>
+                            <p>Początkująca przedsiębiorczyni</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Zbuduj dochodowy biznes już dziś!</h2>
+                <p>Przestań się zastanawiać i zacznij działać. Twój sukces w branży beauty jest na wyciągnięcie ręki.</p>
+                <a href="https://example.com/payment/ebook3" class="btn btn-primary btn-large">Kup teraz za 79,99 zł</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Magdalena Mikurda</h2>
+                    <p>Instruktor</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Kontakt</h3>
+                    <p><i class="fas fa-envelope"></i> magdalena.mikurda@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +48 789 141 247</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kielce, Polska</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Zaobserwuj mnie</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/akademia_sztukipiekna/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/p/Akademia-Sztuki-Pi%C4%99kna-61558035399429/" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@AkademiaSztukiPi%C4%99kna" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Magdalena Mikurda. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

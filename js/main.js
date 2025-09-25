@@ -29,15 +29,33 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.remove('active');
         });
     });
+    
+    // Scroll down indicator functionality
+    const scrollDownIndicator = document.querySelector('.scroll-down-indicator');
+    if (scrollDownIndicator) {
+        scrollDownIndicator.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: aboutSection.offsetTop - 70, // Adjust for header height
+                        autoKill: false
+                    },
+                    ease: "power2.inOut"
+                });
+            }
+        });
+    }
 
     // Smooth scrolling for anchor links with GSAP
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
+            if (target && target !== "#") {
                 gsap.to(window, {
-                    duration: 1,
+                    duration: 0,
                     scrollTo: {
                         y: target.offsetTop - 70, // Adjust for header height
                         autoKill: false
@@ -52,14 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTimeline = gsap.timeline();
     
     // Set initial state (invisible)
-    gsap.set('.hero-content h1, .hero-content h2, .hero-content p, .hero-content .btn', { opacity: 0, y: 30 });
+    gsap.set('.hero-content h1, .hero-content h2, .hero-content p, .hero-content .btn, .scroll-down-indicator', { opacity: 0, y: 30 });
     
     // Animate to visible state
     heroTimeline
         .to('.hero-content h1', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" })
         .to('.hero-content h2', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
         .to('.hero-content p', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-        .to('.hero-content .btn', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
+        .to('.hero-content .btn', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+        .to('.scroll-down-indicator', { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "-=0.4");
 
     // Header animation on scroll
     gsap.to('.header', {
@@ -135,7 +154,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Gallery animations
+    // Community section animations
+    const socialCards = document.querySelectorAll('.social-card');
+    socialCards.forEach((card, index) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            delay: index * 0.2,
+            ease: "back.out(1.7)"
+        });
+    });
+    
+    gsap.from('.community-cta', {
+        scrollTrigger: {
+            trigger: '.community-cta',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 0.3,
+        ease: "power2.out"
+    });
+
+    // Gallery animations and carousel functionality
     const galleryItems = document.querySelectorAll('.gallery-item');
     galleryItems.forEach((item, index) => {
         gsap.from(item, {
@@ -151,9 +200,86 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: "back.out(1.7)"
         });
     });
+    
+    // Carousel functionality
+    const carouselTrack = document.querySelector('.carousel-track');
+    const carouselSlides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    let currentIndex = 0;
+    const slideWidth = 100; // 100% width
+    
+    // Initialize carousel
+    function updateCarousel() {
+        // Update track position
+        if (carouselTrack) {
+            carouselTrack.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            
+            // Update active dot
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Log for testing
+            console.log('Carousel updated to slide:', currentIndex);
+        }
+    }
+    
+    // Call updateCarousel initially to set first slide
+    updateCarousel();
+    
+    // Event listeners for navigation
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselSlides.length - 1;
+            updateCarousel();
+        });
+    }
+    
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex < carouselSlides.length - 1) ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+    }
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+    });
+    
+    // Auto-advance carousel every 5 seconds
+    let carouselInterval = setInterval(() => {
+        currentIndex = (currentIndex < carouselSlides.length - 1) ? currentIndex + 1 : 0;
+        updateCarousel();
+    }, 5000);
+    
+    // Pause auto-advance on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(() => {
+                currentIndex = (currentIndex < carouselSlides.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }, 5000);
+        });
+    }
 
     // Courses section animation
-    gsap.from('.courses-content', {
+    gsap.from('.courses-intro', {
         scrollTrigger: {
             trigger: '.courses',
             start: 'top 70%',
@@ -162,6 +288,37 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         y: 30,
         duration: 1,
+        ease: "power2.out"
+    });
+    
+    // eBook cards animation
+    const ebookCards = document.querySelectorAll('.ebook-card');
+    ebookCards.forEach((card, index) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            delay: index * 0.2,
+            ease: "back.out(1.7)"
+        });
+    });
+    
+    // eBook CTA animation
+    gsap.from('.ebook-cta', {
+        scrollTrigger: {
+            trigger: '.ebook-cta',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        delay: 0.3,
         ease: "power2.out"
     });
     
