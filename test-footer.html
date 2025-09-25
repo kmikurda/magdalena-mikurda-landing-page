@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Test</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .test-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .test-links a {
+            padding: 10px;
+            background-color: #f5f5f5;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+        }
+        .test-links a:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Footer Inclusion Test</h1>
+        <p>This page tests if the footer is correctly included in all pages. Click the links below to navigate to different pages and check if the footer appears correctly.</p>
+        
+        <div class="test-links">
+            <a href="index.html">Home Page</a>
+            <a href="ebooks/strategia-stylistki/index.html">Ebook: Hybrid Basics</a>
+            <a href="ebook-advanced-techniques.html">Ebook: Advanced Techniques</a>
+            <a href="ebook-business.html">Ebook: Business</a>
+            <a href="ebooks/index.html">Ebooks Index</a>
+        </div>
+        
+        <p>The footer should appear below:</p>
+    </div>
+    
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+</body>
+</html>

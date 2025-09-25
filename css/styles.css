@@ -22,6 +22,7 @@
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-secondary: linear-gradient(135deg, var(--secondary-color-light), var(--primary-color-light));
     --gradient-background: linear-gradient(135deg, var(--background-color-primary), var(--background-color-secondary));
+    --gradient-success:  linear-gradient(135deg, #28a745, #218838);
     --gradient-hero: linear-gradient(135deg, #f0f0f0, #e8e8e8);
     --gradient-card: white;
     --instagram-gradient: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
@@ -32,7 +33,7 @@
     
     /* Spacing */
     --section-padding: 5rem 0;
-    --container-padding: 0 1.5rem;
+    --container-padding: 0 1rem;
 }
 
 /* ===== RESET & BASE STYLES ===== */
@@ -725,7 +726,7 @@ section {
     border-radius: 8px;
 }
 
-.info-badge {
+.about-info-badge {
     background: var(--gradient-secondary);
     border-radius: 25px;
     text-align: center;
@@ -736,6 +737,20 @@ section {
     bottom: -5%;
     right: 5%;
     z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.best-option-info-badge {
+    background: var(--gradient-success);
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 500;
+    position: absolute;
+    top: -24px;
+    right: 10px;
+    z-index: 4;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -766,20 +781,45 @@ section {
     line-height: 1.8;
 }
 
-.ebook-grid {
+/* Base grid for ebook displays */
+.ebook-grid, .ebooks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+}
+
+/* Home page specific grid */
+.ebook-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin-bottom: 3rem;
 }
 
 .ebook-card {
     background: var(--gradient-card);
-    padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid var(--border);
     text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Base hover effect for all ebook cards */
+.ebook-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Home page specific ebook card styling */
+.courses .ebook-card {
+    padding: 2rem;
+}
+
+.text-card {
+    margin-bottom: 1rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .ebook-icon-wrapper {
@@ -1023,6 +1063,10 @@ section {
 
 .justify-between {
     justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
 }
 
 .p-6 {

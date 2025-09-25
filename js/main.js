@@ -291,20 +291,36 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: "power2.out"
     });
     
-    // eBook cards animation
+    // eBook bundle animation - optimized for immediate visibility
+    const ebookBundle = document.querySelector('.all-ebooks-bundle');
+    if (ebookBundle) {
+        gsap.from(ebookBundle, {
+            scrollTrigger: {
+                trigger: ebookBundle,
+                start: 'top 90%',
+                toggleActions: 'play none none none'
+            },
+            opacity: 0,
+            y: 20,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    }
+    
+    // eBook cards animation - optimized for faster appearance
     const ebookCards = document.querySelectorAll('.ebook-card');
     ebookCards.forEach((card, index) => {
         gsap.from(card, {
             scrollTrigger: {
                 trigger: card,
-                start: 'top 85%',
+                start: 'top 90%',
                 toggleActions: 'play none none none'
             },
             opacity: 0,
-            y: 50,
-            duration: 0.8,
-            delay: index * 0.2,
-            ease: "back.out(1.7)"
+            y: 30,
+            duration: 0.4,
+            delay: index * 0.05, // Reduced delay between cards
+            ease: "back.out(1.5)"
         });
     });
     

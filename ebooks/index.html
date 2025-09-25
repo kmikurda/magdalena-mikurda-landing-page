@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Ebooki | Magdalena Mikurda" />
+    <meta property="og:description" content="Profesjonalne ebooki o stylizacji paznokci. Zdobądź wiedzę o najlepszych technikach manicure i pedicure." />
+    <meta property="og:image" content="https://magdalenamikurda.pl/assets/images/art1.jpg" />
+    <meta property="og:url" content="https://magdalenamikurda.pl/ebooks.html" />
+    <title>Ebooki | Magdalena Mikurda</title>
+    <link rel="icon" href="../assets/favicon.png">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/ebooks.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload ebook images for faster rendering -->
+    <link rel="preload" href="../assets/images/ebooks/kompendium_chorób.png" as="image">
+    <link rel="preload" href="../assets/images/ebooks/od_pilnika.png" as="image">
+    <link rel="preload" href="../assets/images/ebooks/kwadrat.png" as="image">
+    <link rel="preload" href="../assets/images/ebooks/Strategia_stylistki_paznokci.png" as="image">
+    <link rel="preload" href="../assets/images/ebooks/stylistka.png" as="image">
+    <link rel="preload" href="../assets/images/ebooks/placeholder.png" as="image">
+
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+<body>
+
+
+
+    <section class="ebooks">
+        <div class="container">
+
+            <!-- All Ebooks Bundle -->
+            <div class="all-ebooks-bundle fade-in">
+
+                <div class="bundle-image">
+                    <div class="bundle-grid">
+                        <div class="grid-item top-left">
+                            <img src="../assets/images/ebooks/Strategia_stylistki_paznokci.png" alt="Podstawy Manicure Hybrydowego">
+                        </div>
+                        <div class="grid-item top-right">
+                            <img src="../assets/images/ebooks/kompendium_chorób.png" alt="Zaawansowane Techniki Zdobienia">
+                        </div>
+                        <div class="grid-item bottom-left">
+                            <img src="../assets/images/ebooks/od_pilnika.png" alt="Pedicure Medyczny">
+                        </div>
+                        <div class="grid-item bottom-right">
+                            <img src="../assets/images/ebooks/stylistka.png" alt="Trendy w Stylizacji Paznokci">
+                        </div>
+                        <div class="grid-item center">
+                            <img src="../assets/images/ebooks/kwadrat.png" alt="Biznes Nail Artist">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bundle-content">
+                    <h3 class="bundle-title">Pakiet Wszystkich Ebooków</h3>
+                    <p class="bundle-description">Zdobądź wszystkie dostępne ebooki w jednym pakiecie i zaoszczędź! Kompletna wiedza o stylizacji paznokci w Twoich rękach.</p>
+                    <div class="bundle-includes">
+                        <p><i class="fas fa-check"></i> Podstawy Manicure Hybrydowego</p>
+                        <p><i class="fas fa-check"></i> Zaawansowane Techniki Zdobienia</p>
+                        <p><i class="fas fa-check"></i> Biznes Nail Artist</p>
+                        <p><i class="fas fa-plus"></i> Darmowe aktualizacje i dostęp do przyszłych ebooków</p>
+                    </div>
+                    <div class="bundle-pricing">
+                        <p class="regular-price"><s>189,97 zł</s></p>
+                        <p class="bundle-price">149,99 zł</p>
+                        <p class="savings">Oszczędzasz: 39,98 zł</p>
+                    </div>
+                    <a href="https://example.com/payment/all-ebooks" class="btn-bundle">Kup pakiet teraz</a>
+                </div>
+                <div class="best-option-info-badge">Najlepszy wybór</div>
+
+            </div>
+            
+            <div class="ebooks-grid">
+                <!-- Ebook 1 -->
+                <div class="ebook-card fade-in">
+                    <div class="ebook-image">
+                        <img src="../assets/images/ebooks/Strategia_stylistki_paznokci.png" alt="Podstawy Manicure Hybrydowego">
+                    </div>
+                    <div class="ebook-content">
+                        <h3 class="ebook-title">Podstawy Manicure Hybrydowego</h3>
+                        <p class="ebook-description">Kompletny przewodnik dla początkujących, który wprowadzi Cię w świat profesjonalnego manicure hybrydowego.</p>
+                        <p class="ebook-price">49,99 zł</p>
+                        <div class="ebook-actions">
+                            <a href="strategia-stylistki/index.html" class="btn-details">Szczegóły</a>
+                            <a href="https://example.com/payment/ebook1" class="btn-buy">Kup teraz</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Ebook 3 -->
+                <div class="ebook-card fade-in">
+                    <div class="ebook-image">
+                        <img src="../assets/images/ebooks/kwadrat.png" alt="Biznes Nail Artist">
+                    </div>
+                    <div class="ebook-content">
+                        <h3 class="ebook-title">Biznes Nail Artist</h3>
+                        <p class="ebook-description">Praktyczny poradnik jak założyć i prowadzić dochodowy salon manicure. Od marketingu po zarządzanie klientami.</p>
+                        <p class="ebook-price">79,99 zł</p>
+                        <div class="ebook-actions">
+                            <a href="strategia-stylistki/index.html" class="btn-details">Szczegóły</a>
+                            <a href="https://example.com/payment/ebook3" class="btn-buy">Kup teraz</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ebook 4 -->
+                <div class="ebook-card fade-in">
+                    <div class="ebook-image">
+                        <img src="../assets/images/ebooks/od_pilnika.png" alt="Pedicure Medyczny">
+                    </div>
+                    <div class="ebook-content">
+                        <h3 class="ebook-title">Pedicure Medyczny</h3>
+                        <p class="ebook-description">Kompleksowy przewodnik po pedicure medycznym. Dowiedz się jak bezpiecznie i skutecznie rozwiązywać problemy stóp.</p>
+                        <p class="ebook-price">69,99 zł</p>
+                        <div class="ebook-actions">
+                            <a href="strategia-stylistki/index.html" class="btn-details">Szczegóły</a>
+                            <a href="https://example.com/payment/ebook3" class="btn-buy">Kup teraz</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ebook 2 -->
+                <div class="ebook-card fade-in">
+                    <div class="ebook-image">
+                        <img src="../assets/images/ebooks/kompendium_chorób.png" alt="Zaawansowane Techniki Zdobienia">
+                    </div>
+                    <div class="ebook-content">
+                        <h3 class="ebook-title">Zaawansowane Techniki Zdobienia</h3>
+                        <p class="ebook-description">Poznaj profesjonalne techniki zdobienia paznokci, które zachwycą Twoich klientów i wyróżnią Cię na rynku.</p>
+                        <p class="ebook-price">59,99 zł</p>
+                        <div class="ebook-actions">
+                            <a href="strategia-stylistki/index.html" class="btn-details">Szczegóły</a>
+                            <a href="https://example.com/payment/ebook2" class="btn-buy">Kup teraz</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Ebook 5 -->
+                <div class="ebook-card fade-in">
+                    <div class="ebook-image">
+                        <img src="../assets/images/ebooks/stylistka.png" alt="Pedicure Medyczny">
+                    </div>
+                    <div class="ebook-content">
+                        <h3 class="ebook-title">Pedicure Medyczny</h3>
+                        <p class="ebook-description">Kompleksowy przewodnik po pedicure medycznym. Dowiedz się jak bezpiecznie i skutecznie rozwiązywać problemy stóp.</p>
+                        <p class="ebook-price">69,99 zł</p>
+                        <div class="ebook-actions">
+                            <a href="strategia-stylistki/index.html" class="btn-details">Szczegóły</a>
+                            <a href="https://example.com/payment/ebook2" class="btn-buy">Kup teraz</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ebook 5 -->
+                <div class="ebook-card fade-in">
+                    <div class="ebook-image">
+                        <img src="../assets/images/ebooks/placeholder.png" alt="Trendy w Stylizacji Paznokci">
+                        <span class="coming-soon">Wkrótce</span>
+                    </div>
+                    <div class="ebook-content">
+                        <p class="ebook-description">Więcej informacji wkrótce...</p>
+                        <div class="ebook-actions">
+                            <a href="#" class="btn-buy" style="opacity: 0.7; cursor: not-allowed;">Wkrótce dostępny</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
