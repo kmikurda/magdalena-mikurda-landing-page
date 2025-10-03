@@ -60,6 +60,9 @@
 /* ===== BUY SECTION ===== */
 .buy-section {
     border-radius: 10px;
+    h2 {
+        text-align: center;
+    }
 }
 
 /* ===== FEATURES LIST ===== */
